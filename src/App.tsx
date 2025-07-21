@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import KakaoAuthenticationRouter from "./kakao_authentication/router/KakaoAuthenticationRouter";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <Suspense fallback={<div>로딩중 ........</div>}>
+          <Routes>
+            {/* /auth/** 경로는 KakaoAuthenticationRouter에 위임 */}
+            <Route path="/kakao-authentication/*" element={<KakaoAuthenticationRouter />} />
+            <Route path="/" element={<div>메인 페이지</div>} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
   );
-}
+};
 
 export default App;

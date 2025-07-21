@@ -8,7 +8,7 @@ const KakaoAuthenticationRouter = () => {
     return (
         <Suspense fallback={<div>로딩중 ........</div>}>
             <Routes>
-                <Route path="/authentication/login" element={<KakaoAuthenticationPage/>}/>
+                <Route path="/login" element={<KakaoAuthenticationPage/>}/>
                 <Route path="/signup-agreement" element={<SignupAgreementPage/>}/>
                 <Route path="/signup-summary" element={<SignupSummaryPage />} />
             </Routes>

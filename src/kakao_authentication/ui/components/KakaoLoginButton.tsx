@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import KakaoIcon from "../../assets/kakao_logo.png";
+import KakaoIcon from "../../../assets/kakao_logo.png";
 
 type Provider = "kakao";
 
