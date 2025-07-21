@@ -164,3 +164,6 @@ sketch
 
 # exclude .DS_Store
 .DS_Store
+
+# exclude .env
+.env
