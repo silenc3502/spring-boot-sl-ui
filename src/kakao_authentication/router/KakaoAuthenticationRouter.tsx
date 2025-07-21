@@ -3,12 +3,14 @@ import {Routes, Route} from "react-router-dom";
 import KakaoAuthenticationPage from "../pages/KakaoAuthenticationPage";
 import SignupAgreementPage from "../pages/SignupAgreementPage";
 import SignupSummaryPage from "../pages/SignupSummaryPage";
+import RedirectCodePage from "../redirection/RedirectCodePage";
 
 const KakaoAuthenticationRouter = () => {
     return (
         <Suspense fallback={<div>로딩중 ........</div>}>
             <Routes>
                 <Route path="/login" element={<KakaoAuthenticationPage/>}/>
+                <Route path="redirect-code" element={<RedirectCodePage />} />
                 <Route path="/signup-agreement" element={<SignupAgreementPage/>}/>
                 <Route path="/signup-summary" element={<SignupSummaryPage />} />
             </Routes>

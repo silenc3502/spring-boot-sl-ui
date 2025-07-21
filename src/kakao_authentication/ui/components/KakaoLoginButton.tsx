@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import KakaoIcon from "../../../assets/kakao_logo.png";
 
+import "./KakaoLoginButton.css";
+
 type Provider = "kakao";
 
 interface Props {
@@ -15,7 +17,7 @@ const providerConfig: Record<
         label: string;
         baseBgColor: string;
         textColor: string;
-        border: string;
+        borderColor: string;
         hoverBgColor: string;
     }
 > = {
@@ -23,27 +25,32 @@ const providerConfig: Record<
         src: KakaoIcon,
         label: "카카오 로그인",
         baseBgColor: "#FEE500",
-        textColor: "text-black",
-        border: "border border-yellow-400",
+        textColor: "#000000",
+        borderColor: "#FACC15",
         hoverBgColor: "#FFD600",
     },
 };
 
 const KakaoLoginButton: React.FC<Props> = ({ provider, onClick }) => {
-    const { src, label, baseBgColor, textColor, border, hoverBgColor } = providerConfig[provider];
-
+    const { src, label, baseBgColor, textColor, borderColor, hoverBgColor } = providerConfig[provider];
     const [hover, setHover] = useState(false);
+
+    const style: React.CSSProperties = {
+        backgroundColor: hover ? hoverBgColor : baseBgColor,
+        color: textColor,
+        border: `1px solid ${borderColor}`,
+    };
 
     return (
         <button
+            className="social-login-button"
+            style={style}
             onClick={onClick}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            className={`flex items-center gap-3 w-full px-4 py-2 rounded-md transition ${textColor} ${border} shadow-sm`}
-            style={{ backgroundColor: hover ? hoverBgColor : baseBgColor }}
         >
-            <img src={src} alt={`${provider} icon`} className="h-6 w-6 object-contain" />
-            <span className="text-sm font-semibold">{label}</span>
+            <img src={src} alt={`${provider} icon`} className="social-login-icon" />
+            <span className="social-login-label">{label}</span>
         </button>
     );
 };

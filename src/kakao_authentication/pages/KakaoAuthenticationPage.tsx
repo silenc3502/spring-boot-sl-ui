@@ -1,19 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import KakaoLoginButton from "../ui/components/KakaoLoginButton";
+import env from "../../env";
 
-const SocialAuthenticationButtons: React.FC = () => {
+const KakaoAuthenticationPage: React.FC = () => {
     const navigate = useNavigate();
 
     const handleKakaoLogin = () => {
-        navigate("/kakao-authentication/login"); // 위에서 만든 KakaoLoginPage로 이동
+        if (!env.api.KAKAO_AUTH_URL) {
+            console.error("KAKAO_AUTH_URL is not defined");
+            return;
+        }
+        window.location.href = env.api.KAKAO_AUTH_URL;
     };
 
     return (
         <div
-            className="flex flex-col w-full max-w-xs mx-auto"
             style={{
-                minHeight: `calc(100vh - 64px)`,
+                width: "100%",
+                maxWidth: "320px",    // 원하는 최대 너비 (Tailwind max-w-xs)
+                margin: "0 auto",     // 가로 중앙 정렬
+                minHeight: `calc(100vh)`,
                 gap: '1rem',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -26,4 +33,4 @@ const SocialAuthenticationButtons: React.FC = () => {
     );
 };
 
-export default SocialAuthenticationButtons;
+export default KakaoAuthenticationPage;

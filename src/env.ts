@@ -9,7 +9,7 @@ interface Env {
 const env: Env = {
     mode: process.env.NODE_ENV,
     api: {
-        KAKAO_AUTH_URL: process.env.REACT_KAKAO_AUTH_URL,
+        KAKAO_AUTH_URL: process.env.REACT_APP_KAKAO_AUTH_URL,
         MAIN_API_URL: process.env.REACT_APP_BASE_URL,
     },
 };
